@@ -41,5 +41,29 @@ def main():
     vysledek = linear_search(seznam, hledane_cislo)
     print(vysledek)
 
+
+def binary_search(seznam_cisel, hledane_cislo):
+    levy = 0
+    pravy = len(seznam_cisel) -1
+
+    while levy <= pravy:
+        stred = (levy + pravy) // 2
+
+        if seznam_cisel[stred] == hledane_cislo:
+            return stred
+
+        elif seznam_cisel[stred] < hledane_cislo:
+            levy += 1
+        else:
+            pravy = stred - 1
+
+    return None
+
+def main():
+    seznam_cisel =  read_data("sequential.json","ordered_numbers")
+    hledane_cislo = 45
+    index = binary_search(seznam_cisel, hledane_cislo)
+
+    print(index)
 if __name__ == "__main__":
     main()
